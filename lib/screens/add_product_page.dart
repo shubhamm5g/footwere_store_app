@@ -17,7 +17,7 @@ class AddProductPage extends StatelessWidget {
             width: double.maxFinite,
             child: Column(children: [
               const Text(
-                "Add New Product",
+                "Add New tst",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
