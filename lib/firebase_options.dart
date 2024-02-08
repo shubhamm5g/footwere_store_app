@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,11 +43,38 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCKvzBQvXNnd64sekL5y0ZGkFisoYj-2_4',
+    appId: '1:617030355482:web:35633a41589a4537b35fa3',
+    messagingSenderId: '617030355482',
+    projectId: 'footwaredb',
+    authDomain: 'footwaredb.firebaseapp.com',
+    storageBucket: 'footwaredb.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD1XFb0i9EBGW6vffCaNxGA8Bt7Lh8XJmk',
-    appId: '1:821813530893:android:35c04b5eadc1e0e8146044',
-    messagingSenderId: '821813530893',
-    projectId: 'footwareapp-f68eb',
-    storageBucket: 'footwareapp-f68eb.appspot.com',
+    apiKey: 'AIzaSyCCchEk4xMk_1IEWJrPbT7mh12OEMK-FRs',
+    appId: '1:617030355482:android:fe270d8a6c4fb33eb35fa3',
+    messagingSenderId: '617030355482',
+    projectId: 'footwaredb',
+    storageBucket: 'footwaredb.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAiKQEVwkM23tn885Uabaqku4Alin_lEYQ',
+    appId: '1:617030355482:ios:abf2c4894f0f9229b35fa3',
+    messagingSenderId: '617030355482',
+    projectId: 'footwaredb',
+    storageBucket: 'footwaredb.appspot.com',
+    iosBundleId: 'com.example.footwereStoreApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAiKQEVwkM23tn885Uabaqku4Alin_lEYQ',
+    appId: '1:617030355482:ios:3489fd6c1a73e692b35fa3',
+    messagingSenderId: '617030355482',
+    projectId: 'footwaredb',
+    storageBucket: 'footwaredb.appspot.com',
+    iosBundleId: 'com.example.footwereStoreApp.RunnerTests',
   );
 }

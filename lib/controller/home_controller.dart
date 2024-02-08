@@ -10,16 +10,45 @@ class HomeController extends GetxController {
   TextEditingController productImageController = TextEditingController();
   TextEditingController productPriceController = TextEditingController();
 
-  String category = "";
-  String brand = "";
+  String category = "select cate";
+  String brand = "select brand";
   bool offer = false;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference productCollection;
   @override
-  void onInit() {
+  Future<void> onInit() async {
     productCollection = firestore.collection("products");
+    await fetchProducts();
+    update();
     super.onInit();
+  }
+
+  List<Product> products = [];
+  fetchProducts() async {
+    try {
+      QuerySnapshot productSnapshot = await productCollection.get();
+      final List<Product> retrivedProducts = productSnapshot.docs
+          .map((doc) => Product.fromJson(doc.data() as Map<String, dynamic>))
+          .toList();
+      products.clear();
+      products.assignAll(retrivedProducts);
+      update();
+    } catch (e) {
+      Get.snackbar("error", "Fetch error $e", colorText: Colors.red);
+    } finally {
+      update();
+    }
+  }
+
+  deleteProducts(String id) async {
+    try {
+      await productCollection.doc(id).delete();
+      fetchProducts();
+      Get.snackbar("Deleted", "Deleted successfully ", colorText: Colors.green);
+    } catch (e) {
+      Get.snackbar("error", e.toString(), colorText: Colors.red);
+    }
   }
 
   addProduct() {
@@ -40,8 +69,21 @@ class HomeController extends GetxController {
       doc.set(productJson);
       Get.snackbar("Success", "Product added Successfully",
           colorText: Colors.green);
+      setValueDefault();
+      update();
     } catch (e) {
-      print(e);
+      Get.snackbar('Error', e.toString(), colorText: Colors.red);
     }
+  }
+
+  setValueDefault() {
+    productNameController.clear();
+    productDescriptionController.clear();
+    productImageController.clear();
+    productPriceController.clear();
+    category = "select cate";
+    brand = "select brand";
+    offer = false;
+    update();
   }
 }

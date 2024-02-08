@@ -14,18 +14,23 @@ class HomePage extends StatelessWidget {
           title: Text("Footer Admin"),
         ),
         body: ListView.builder(
-            itemCount: 10,
+            itemCount: controller.products.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text("Title"),
-                subtitle: Text("Price : 100"),
-                trailing:
-                    IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                title: Text(controller.products[index].name.toString()),
+                subtitle:
+                    Text("Price : ${controller.products[index].price ?? 0}"),
+                trailing: IconButton(
+                    onPressed: () {
+                      controller.deleteProducts(
+                          controller.products[index].id.toString());
+                    },
+                    icon: Icon(Icons.delete)),
               );
             }),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(AddProductPage());
+            Get.to(() => AddProductPage());
           },
           child: Icon(Icons.add),
         ),

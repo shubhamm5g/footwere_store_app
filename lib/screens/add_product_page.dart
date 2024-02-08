@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footwere_store_app/controller/home_controller.dart';
+import 'package:footwere_store_app/screens/home_page.dart';
 import 'package:footwere_store_app/widgets/dropdown_btn.dart';
 import 'package:get/get.dart';
 
@@ -67,8 +68,9 @@ class AddProductPage extends StatelessWidget {
                       child: DropDownBtn(
                     onSelected: (selectedValue) {
                       controller.category = selectedValue ?? "";
+                      controller.update();
                     },
-                    selectedItemText: "Select Cate",
+                    selectedItemText: controller.category,
                     items: ['Cate1', 'Cate2', 'Cate3'],
                   )),
                   const WSpace(),
@@ -76,8 +78,9 @@ class AddProductPage extends StatelessWidget {
                       child: DropDownBtn(
                     onSelected: (selectedValue) {
                       controller.brand = selectedValue ?? "";
+                      controller.update();
                     },
-                    selectedItemText: "Select Brand",
+                    selectedItemText: controller.brand,
                     items: ['Brand1', 'Brand2', 'Brand3'],
                   )),
                 ],
@@ -89,13 +92,15 @@ class AddProductPage extends StatelessWidget {
                   controller.offer =
                       bool.tryParse(selectedValue ?? "false") ?? false;
                 },
-                selectedItemText: "Select Offer",
+                selectedItemText: controller.offer.toString() ?? "Select Offer",
                 items: ['true', "false"],
               ),
               HSpace(),
               ElevatedButton(
                   onPressed: () {
                     controller.addProduct();
+                    controller.update();
+                    Get.to(() => HomePage());
                   },
                   child: Text("Add Product"))
             ]),

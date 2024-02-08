@@ -7,9 +7,9 @@ import 'package:footwere_store_app/screens/home_page.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
-  Get.put(HomeController());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Get.put(HomeController());
   runApp(const MainApp());
 }
 
