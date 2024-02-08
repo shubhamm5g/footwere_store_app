@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 Future main() async {
   Get.put(HomeController());
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
 }
 

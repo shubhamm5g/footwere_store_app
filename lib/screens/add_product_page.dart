@@ -17,7 +17,7 @@ class AddProductPage extends StatelessWidget {
             width: double.maxFinite,
             child: Column(children: [
               const Text(
-                "Add New tst",
+                "Add New Product",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -25,6 +25,7 @@ class AddProductPage extends StatelessWidget {
               ),
               HSpace(),
               TextField(
+                controller: controller.productNameController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -33,6 +34,7 @@ class AddProductPage extends StatelessWidget {
               ),
               const HSpace(),
               TextField(
+                controller: controller.productDescriptionController,
                 maxLines: 4,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -42,6 +44,7 @@ class AddProductPage extends StatelessWidget {
               ),
               const HSpace(),
               TextField(
+                controller: controller.productImageController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -50,6 +53,7 @@ class AddProductPage extends StatelessWidget {
               ),
               const HSpace(),
               TextField(
+                controller: controller.productPriceController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -61,14 +65,18 @@ class AddProductPage extends StatelessWidget {
                 children: [
                   Flexible(
                       child: DropDownBtn(
-                    onSelected: (selectedValue) {},
+                    onSelected: (selectedValue) {
+                      controller.category = selectedValue ?? "";
+                    },
                     selectedItemText: "Select Cate",
                     items: ['Cate1', 'Cate2', 'Cate3'],
                   )),
                   const WSpace(),
                   Flexible(
                       child: DropDownBtn(
-                    onSelected: (selectedValue) {},
+                    onSelected: (selectedValue) {
+                      controller.brand = selectedValue ?? "";
+                    },
                     selectedItemText: "Select Brand",
                     items: ['Brand1', 'Brand2', 'Brand3'],
                   )),
@@ -77,12 +85,19 @@ class AddProductPage extends StatelessWidget {
               const HSpace(),
               Text("Offer Prodcuts ?"),
               DropDownBtn(
-                onSelected: (selectedValue) {},
+                onSelected: (selectedValue) {
+                  controller.offer =
+                      bool.tryParse(selectedValue ?? "false") ?? false;
+                },
                 selectedItemText: "Select Offer",
                 items: ['true', "false"],
               ),
               HSpace(),
-              ElevatedButton(onPressed: () {}, child: Text("Add Product"))
+              ElevatedButton(
+                  onPressed: () {
+                    controller.addProduct();
+                  },
+                  child: Text("Add Product"))
             ]),
           ),
         ),
