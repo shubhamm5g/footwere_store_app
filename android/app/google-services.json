@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "821813530893",
+    "project_id": "footwareapp-f68eb",
+    "storage_bucket": "footwareapp-f68eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821813530893:android:35c04b5eadc1e0e8146044",
+        "android_client_info": {
+          "package_name": "com.example.footwere_store_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1XFb0i9EBGW6vffCaNxGA8Bt7Lh8XJmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

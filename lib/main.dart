@@ -1,7 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:footwere_store_app/screens/home_screen.dart';
+import 'package:footwere_store_app/controller/home_controller.dart';
+import 'package:footwere_store_app/firebase_options.dart';
 
-void main() {
+import 'package:footwere_store_app/screens/home_page.dart';
+import 'package:get/get.dart';
+
+Future main() async {
+  Get.put(HomeController());
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
 }
 
@@ -10,10 +18,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      home: HomeScreen(),
+      home: const HomePage(),
     );
   }
 }
