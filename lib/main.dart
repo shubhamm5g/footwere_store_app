@@ -6,10 +6,10 @@ import 'package:footwere_store_app/firebase_options.dart';
 import 'package:footwere_store_app/screens/home_page.dart';
 import 'package:get/get.dart';
 
-Future main() async {
+Future<void> main() async {
   Get.put(HomeController());
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
 }
 
