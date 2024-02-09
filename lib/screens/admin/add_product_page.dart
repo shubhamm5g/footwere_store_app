@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:footwere_store_app/controller/home_controller.dart';
-import 'package:footwere_store_app/screens/home_page.dart';
+import 'package:footwere_store_app/controller/admin/home_controller.dart';
+import 'package:footwere_store_app/screens/admin/home_page.dart';
 import 'package:footwere_store_app/widgets/dropdown_btn.dart';
 import 'package:get/get.dart';
 
@@ -100,7 +100,7 @@ class AddProductPage extends StatelessWidget {
                   onPressed: () {
                     controller.addProduct();
                     controller.update();
-                    Get.to(() => HomePage());
+                    Get.offAll(() => HomePage());
                   },
                   child: Text("Add Product"))
             ]),

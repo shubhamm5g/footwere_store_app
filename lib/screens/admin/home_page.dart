@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:footwere_store_app/controller/home_controller.dart';
-import 'package:footwere_store_app/screens/add_product_page.dart';
+import 'package:footwere_store_app/controller/admin/home_controller.dart';
+import 'package:footwere_store_app/screens/admin/add_product_page.dart';
+import 'package:footwere_store_app/screens/client/client_login_page.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,6 +13,13 @@ class HomePage extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           title: Text("Footer Admin"),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Get.offAll(() => ClientLoginPage());
+                },
+                child: Text("client login page"))
+          ],
         ),
         body: ListView.builder(
             itemCount: controller.products.length,
