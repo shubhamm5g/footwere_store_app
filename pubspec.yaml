@@ -18,6 +18,8 @@ dependencies:
   build_runner: ^2.4.8
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
+  get_storage: ^2.1.1
+  otp_text_field_v2: ^1.0.3
   
   
 

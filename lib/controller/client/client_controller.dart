@@ -12,3 +12,4 @@ class ClientController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
 }
+

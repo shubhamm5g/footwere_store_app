@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../model/product_model.dart';
+import '../../model/product_model/product_model.dart';
 
 class HomeController extends GetxController {
   TextEditingController productNameController = TextEditingController();

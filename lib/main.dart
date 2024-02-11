@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:footwere_store_app/controller/admin/home_controller.dart';
 import 'package:footwere_store_app/controller/client/client_controller.dart';
+import 'package:footwere_store_app/controller/client/login_controller.dart';
 import 'package:footwere_store_app/firebase_options.dart';
 
 import 'package:footwere_store_app/screens/admin/home_page.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Get.put(HomeController());
   Get.put(ClientController());
+  Get.put(LoginController());
   runApp(const MainApp());
 }
 
